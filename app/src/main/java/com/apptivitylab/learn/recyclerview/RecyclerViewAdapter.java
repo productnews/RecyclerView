@@ -46,6 +46,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter
                 mRecyclerViewListener.onItemSelectedListener(position);
             }
         });*/
+        // onBindViewHolder will only be called on every scroll on the RecyclerView
         RecyclerViewHolder recyclerViewHolder = (RecyclerViewHolder)holder;
         recyclerViewHolder.setPosition(position);
         recyclerViewHolder.updateTextView(position);
