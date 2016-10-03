@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by jamehii on 10/1/2016.
  */
@@ -15,10 +18,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter
 {
     RecyclerView mRecyclerView;
     RecyclerViewHolder.RecyclerViewListener mRecyclerViewListener;
+    List<String> mJournalList = new ArrayList<String>();
 
     public RecyclerViewAdapter(RecyclerViewHolder.RecyclerViewListener listener)
     {
         mRecyclerViewListener = listener;
+    }
+
+    public void addToJournalList(String desc)
+    {
+        mJournalList.add(desc);
     }
 
     @Override
@@ -45,12 +54,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter
             {
                 mRecyclerViewListener.onItemSelectedListener(position);
             }
-        });*/
+        });
+*/
         // onBindViewHolder will only be called on every scroll on the RecyclerView
+
         RecyclerViewHolder recyclerViewHolder = (RecyclerViewHolder)holder;
+/*
         recyclerViewHolder.setPosition(position);
         recyclerViewHolder.updateTextView(position);
-
+*/
+        String journalDesc = mJournalList.get(position);
+        recyclerViewHolder.updateJournalList(journalDesc);
     }
 
 
@@ -58,7 +72,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter
     @Override
     public int getItemCount()
     {
-        return 100;
+        return mJournalList.size();
     }
 
 }

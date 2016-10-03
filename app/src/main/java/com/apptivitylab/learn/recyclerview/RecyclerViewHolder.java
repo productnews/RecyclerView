@@ -38,14 +38,19 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder
             @Override
             public void onClick(View view)
             {
-                mRecyclerViewListener.onItemSelectedListener(mPosition);
+                mRecyclerViewListener.onItemSelectedListener(getAdapterPosition());
             }
         });
     }
 
     public void updateTextView(int position)
     {
-        mTextView.setText("Item " + mPosition);
+        mTextView.setText("Item " + getAdapterPosition());
+    }
+
+    public void updateJournalList(String journalDesc)
+    {
+        mTextView.setText(journalDesc);
     }
 
 }
