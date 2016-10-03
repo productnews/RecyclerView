@@ -46,8 +46,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter
                 mRecyclerViewListener.onItemSelectedListener(position);
             }
         });*/
-        ((RecyclerViewHolder)holder).setPosition(position);
-        ((RecyclerViewHolder)holder).updateTextView(position);
+        RecyclerViewHolder recyclerViewHolder = (RecyclerViewHolder)holder;
+        recyclerViewHolder.setPosition(position);
+        recyclerViewHolder.updateTextView(position);
 
     }
 
