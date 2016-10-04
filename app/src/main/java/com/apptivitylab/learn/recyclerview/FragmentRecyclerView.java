@@ -42,6 +42,25 @@ public class FragmentRecyclerView extends Fragment implements RecyclerViewHolder
     }
 
     @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
+    {
+        super.onViewCreated(view, savedInstanceState);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+
+        mRecyclerView.setLayoutManager(layoutManager);
+
+        mAdapter = new RecyclerViewAdapter(this);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void onItemSelectedListener(int position)
+    {
+        Log.d(TAG, "onItemSelectedListener: " + position);
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
         super.onCreateOptionsMenu(menu, inflater);
@@ -75,22 +94,4 @@ public class FragmentRecyclerView extends Fragment implements RecyclerViewHolder
         }
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
-    {
-        super.onViewCreated(view, savedInstanceState);
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-
-        mRecyclerView.setLayoutManager(layoutManager);
-
-        mAdapter = new RecyclerViewAdapter(this);
-        mRecyclerView.setAdapter(mAdapter);
-    }
-
-    @Override
-    public void onItemSelectedListener(int position)
-    {
-        Log.d(TAG, "onItemSelectedListener: " + position);
-    }
 }
